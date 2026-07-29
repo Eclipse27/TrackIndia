@@ -1,0 +1,282 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Base Reset & Globals ──────────────────────────────────────────────────── */
+@layer base {
+  :root {
+    --color-bg-primary: #050d1f;
+    --color-bg-secondary: #091428;
+    --color-bg-card: rgba(9, 20, 40, 0.8);
+    --color-accent-cyan: #00e5ff;
+    --color-accent-violet: #7c3aed;
+    --color-text-primary: #e2e8f0;
+    --color-text-secondary: #94a3b8;
+    --color-border: rgba(255, 255, 255, 0.06);
+  }
+
+  * {
+    border-color: var(--color-border);
+    box-sizing: border-box;
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply bg-navy-900 text-slate-200 font-sans antialiased;
+    background-color: var(--color-bg-primary);
+    background-image: 
+      radial-gradient(at 20% 0%, rgba(124, 58, 237, 0.08) 0px, transparent 50%),
+      radial-gradient(at 80% 100%, rgba(0, 229, 255, 0.06) 0px, transparent 50%);
+    min-height: 100vh;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #091428;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(0, 229, 255, 0.3);
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 229, 255, 0.5);
+  }
+
+  ::selection {
+    background: rgba(0, 229, 255, 0.2);
+    color: #00e5ff;
+  }
+}
+
+/* ─── Component Layer ───────────────────────────────────────────────────────── */
+@layer components {
+  /* Glass card */
+  .glass-card {
+    @apply rounded-xl border;
+    background: rgba(9, 20, 40, 0.75);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-color: rgba(255, 255, 255, 0.06);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255,255,255,0.05);
+  }
+
+  /* Neon bordered card */
+  .neon-border-cyan {
+    border: 1px solid rgba(0, 229, 255, 0.2);
+    box-shadow: 0 0 20px rgba(0, 229, 255, 0.08), inset 0 0 20px rgba(0, 229, 255, 0.03);
+  }
+
+  .neon-border-violet {
+    border: 1px solid rgba(124, 58, 237, 0.3);
+    box-shadow: 0 0 20px rgba(124, 58, 237, 0.1), inset 0 0 20px rgba(124, 58, 237, 0.03);
+  }
+
+  /* Gradient text */
+  .text-gradient-cyan {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, #00e5ff, #22d3ee, #a78bfa);
+  }
+
+  .text-gradient-violet {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, #a78bfa, #8b5cf6, #00e5ff);
+  }
+
+  /* Glow button */
+  .btn-glow-cyan {
+    @apply relative overflow-hidden px-6 py-3 rounded-lg font-semibold text-sm transition-all duration-300;
+    background: linear-gradient(135deg, rgba(0, 229, 255, 0.15), rgba(34, 211, 238, 0.1));
+    border: 1px solid rgba(0, 229, 255, 0.3);
+    color: #00e5ff;
+  }
+
+  .btn-glow-cyan:hover {
+    background: linear-gradient(135deg, rgba(0, 229, 255, 0.25), rgba(34, 211, 238, 0.2));
+    box-shadow: 0 0 25px rgba(0, 229, 255, 0.3);
+    transform: translateY(-1px);
+  }
+
+  .btn-glow-violet {
+    @apply relative overflow-hidden px-6 py-3 rounded-lg font-semibold text-sm transition-all duration-300;
+    background: linear-gradient(135deg, rgba(124, 58, 237, 0.2), rgba(139, 92, 246, 0.1));
+    border: 1px solid rgba(139, 92, 246, 0.3);
+    color: #a78bfa;
+  }
+
+  .btn-glow-violet:hover {
+    background: linear-gradient(135deg, rgba(124, 58, 237, 0.35), rgba(139, 92, 246, 0.25));
+    box-shadow: 0 0 25px rgba(124, 58, 237, 0.35);
+    transform: translateY(-1px);
+  }
+
+  /* Metric card */
+  .metric-card {
+    @apply glass-card p-6 flex flex-col gap-2;
+  }
+
+  .metric-value {
+    @apply text-3xl font-bold font-display tracking-tight text-gradient-cyan;
+  }
+
+  .metric-label {
+    @apply text-xs font-medium uppercase tracking-widest text-slate-400;
+  }
+
+  /* Status badge */
+  .status-badge {
+    @apply inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+
+  .status-on-time {
+    @apply status-badge;
+    background: rgba(16, 185, 129, 0.1);
+    color: #10b981;
+    border: 1px solid rgba(16, 185, 129, 0.2);
+  }
+
+  .status-delayed {
+    @apply status-badge;
+    background: rgba(245, 158, 11, 0.1);
+    color: #f59e0b;
+    border: 1px solid rgba(245, 158, 11, 0.2);
+  }
+
+  .status-cancelled {
+    @apply status-badge;
+    background: rgba(239, 68, 68, 0.1);
+    color: #ef4444;
+    border: 1px solid rgba(239, 68, 68, 0.2);
+  }
+
+  /* Live dot */
+  .live-dot {
+    @apply w-2 h-2 rounded-full bg-emerald-400;
+    animation: livePulse 2s ease-in-out infinite;
+  }
+
+  /* Navbar */
+  .navbar-glass {
+    background: rgba(5, 13, 31, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  /* Search input */
+  .search-input {
+    @apply w-full px-4 py-3 rounded-xl text-slate-200 placeholder-slate-500 text-sm transition-all duration-300 outline-none;
+    background: rgba(9, 20, 40, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .search-input:focus {
+    border-color: rgba(0, 229, 255, 0.4);
+    box-shadow: 0 0 0 3px rgba(0, 229, 255, 0.08);
+  }
+
+  /* Section divider */
+  .section-divider {
+    @apply w-16 h-1 rounded-full mx-auto my-4;
+    background: linear-gradient(90deg, #00e5ff, #7c3aed);
+  }
+}
+
+/* ─── Utility Layer ─────────────────────────────────────────────────────────── */
+@layer utilities {
+  .will-change-transform {
+    will-change: transform;
+  }
+
+  .will-change-opacity {
+    will-change: opacity;
+  }
+}
+
+/* ─── Leaflet Map Dark Theme ────────────────────────────────────────────────── */
+/* IMPORTANT: Keep map z-index low so search dropdowns always render on top */
+.leaflet-container {
+  background: #050d1f !important;
+  font-family: 'Inter', sans-serif;
+  z-index: 1;
+}
+
+/* Search dropdown must sit above the map (Leaflet internally uses z 200-600) */
+.search-dropdown-portal {
+  position: absolute;
+  z-index: 9999 !important;
+  top: 100%;
+  left: 0;
+  right: 0;
+  margin-top: 4px;
+}
+
+.leaflet-tile-pane {
+  filter: brightness(0.85) contrast(1.1) saturate(0.8);
+}
+
+.leaflet-popup-content-wrapper {
+  background: rgba(9, 20, 40, 0.95) !important;
+  border: 1px solid rgba(0, 229, 255, 0.2) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 229, 255, 0.1) !important;
+  color: #e2e8f0 !important;
+}
+
+.leaflet-popup-tip {
+  background: rgba(9, 20, 40, 0.95) !important;
+}
+
+.leaflet-popup-close-button {
+  color: #94a3b8 !important;
+}
+
+.leaflet-control-zoom {
+  border: 1px solid rgba(255, 255, 255, 0.06) !important;
+  border-radius: 8px !important;
+  overflow: hidden;
+}
+
+.leaflet-control-zoom a {
+  background: rgba(9, 20, 40, 0.9) !important;
+  color: #94a3b8 !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
+}
+
+.leaflet-control-zoom a:hover {
+  background: rgba(0, 229, 255, 0.15) !important;
+  color: #00e5ff !important;
+}
+
+.leaflet-attribution-flag {
+  display: none !important;
+}
+
+/* ─── Custom Keyframe Animations ────────────────────────────────────────────── */
+@keyframes livePulse {
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.4); }
+  50% { opacity: 0.8; box-shadow: 0 0 0 6px rgba(52, 211, 153, 0); }
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes scanLine {
+  0% { transform: translateY(-100%); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateY(100vh); opacity: 0; }
+}

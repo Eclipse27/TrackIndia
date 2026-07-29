@@ -1,0 +1,151 @@
+/**
+ * Backend mock train dataset — mirrors frontend mockTrains.js schema.
+ * Used in Phase 5 API; extended with live sim data in Phase 6.
+ */
+
+const MOCK_TRAINS = [
+  {
+    id: 'VB-22435',
+    number: '22435',
+    name: 'Vande Bharat Express',
+    type: 'VANDE_BHARAT',
+    status: 'RUNNING',
+    delay: 0,
+    speed: 160,
+    occupancy: 92,
+    currentStationIndex: 2,
+    position: { lat: 27.1767, lng: 78.0081 },
+    route: [
+      { code: 'NDLS', name: 'New Delhi', lat: 28.6439, lng: 77.2090, scheduledArr: null, scheduledDep: '06:00', actualDep: '06:00', platform: '16' },
+      { code: 'AGC', name: 'Agra Cantt', lat: 27.1767, lng: 78.0081, scheduledArr: '08:00', scheduledDep: '08:02', actualArr: '08:00', platform: '1' },
+      { code: 'GWL', name: 'Gwalior', lat: 26.2124, lng: 78.1772, scheduledArr: '09:15', scheduledDep: '09:17', platform: '2' },
+      { code: 'JHS', name: 'Jhansi', lat: 25.4486, lng: 78.5685, scheduledArr: '10:05', scheduledDep: '10:10', platform: '1' },
+      { code: 'BHOPAL', name: 'Bhopal', lat: 23.2599, lng: 77.4126, scheduledArr: '12:05', scheduledDep: '12:15', platform: '3' },
+    ],
+    origin: { code: 'NDLS', name: 'New Delhi', lat: 28.6439, lng: 77.2090 },
+    destination: { code: 'BHOPAL', name: 'Bhopal', lat: 23.2599, lng: 77.4126 },
+    coaches: 16, classes: ['CC', 'EC'], runDays: 'Mon Tue Wed Thu Fri Sat',
+    eta: '12:05', journeyProgress: 38,
+  },
+  {
+    id: 'SHAB-12002',
+    number: '12002',
+    name: 'Shatabdi Express',
+    type: 'SHATABDI',
+    status: 'DELAYED',
+    delay: 12,
+    speed: 130,
+    occupancy: 78,
+    currentStationIndex: 1,
+    position: { lat: 30.7333, lng: 76.7794 },
+    route: [
+      { code: 'NDLS', name: 'New Delhi', lat: 28.6439, lng: 77.2090, scheduledArr: null, scheduledDep: '07:20', actualDep: '07:32', platform: '4' },
+      { code: 'CDG', name: 'Chandigarh', lat: 30.7333, lng: 76.7794, scheduledArr: '09:40', scheduledDep: '09:45', actualArr: '09:52', platform: '3' },
+      { code: 'UMB', name: 'Ambala Cantt', lat: 30.3783, lng: 76.7767, scheduledArr: '09:05', scheduledDep: '09:08', platform: '1' },
+      { code: 'KLR', name: 'Kalka', lat: 30.8407, lng: 76.9476, scheduledArr: '10:40', scheduledDep: null, platform: '1' },
+    ],
+    origin: { code: 'NDLS', name: 'New Delhi', lat: 28.6439, lng: 77.2090 },
+    destination: { code: 'KLR', name: 'Kalka', lat: 30.8407, lng: 76.9476 },
+    coaches: 18, classes: ['CC', '2S'], runDays: 'Daily',
+    eta: '10:52', journeyProgress: 55,
+  },
+  {
+    id: 'RAJ-12951',
+    number: '12951',
+    name: 'Mumbai Rajdhani',
+    type: 'RAJDHANI',
+    status: 'RUNNING',
+    delay: 0,
+    speed: 140,
+    occupancy: 98,
+    currentStationIndex: 3,
+    position: { lat: 22.3072, lng: 73.1812 },
+    route: [
+      { code: 'NDLS', name: 'New Delhi', lat: 28.6439, lng: 77.2090, scheduledArr: null, scheduledDep: '17:00', platform: '1' },
+      { code: 'KOTA', name: 'Kota', lat: 25.1801, lng: 75.8508, scheduledArr: '22:20', scheduledDep: '22:25', platform: '2' },
+      { code: 'RTM', name: 'Ratlam', lat: 23.3315, lng: 75.0367, scheduledArr: '01:05', scheduledDep: '01:10', platform: '1' },
+      { code: 'BRC', name: 'Vadodara', lat: 22.3072, lng: 73.1812, scheduledArr: '04:05', scheduledDep: '04:15', platform: '3' },
+      { code: 'ST', name: 'Surat', lat: 21.2060, lng: 72.8361, scheduledArr: '05:50', scheduledDep: '05:55', platform: '2' },
+      { code: 'BCT', name: 'Mumbai Central', lat: 18.9713, lng: 72.8195, scheduledArr: '08:35', scheduledDep: null, platform: '5' },
+    ],
+    origin: { code: 'NDLS', name: 'New Delhi', lat: 28.6439, lng: 77.2090 },
+    destination: { code: 'BCT', name: 'Mumbai Central', lat: 18.9713, lng: 72.8195 },
+    coaches: 20, classes: ['1A', '2A', '3A'], runDays: 'Daily',
+    eta: '08:35', journeyProgress: 62,
+  },
+  {
+    id: 'TEJAS-82901',
+    number: '82901',
+    name: 'Mumbai Ahmedabad Tejas',
+    type: 'TEJAS',
+    status: 'RUNNING',
+    delay: 0,
+    speed: 155,
+    occupancy: 85,
+    currentStationIndex: 1,
+    position: { lat: 21.1702, lng: 72.8311 },
+    route: [
+      { code: 'BCT', name: 'Mumbai Central', lat: 18.9713, lng: 72.8195, scheduledArr: null, scheduledDep: '06:40', platform: '1' },
+      { code: 'ST', name: 'Surat', lat: 21.2060, lng: 72.8361, scheduledArr: '09:30', scheduledDep: '09:32', platform: '4' },
+      { code: 'BRC', name: 'Vadodara', lat: 22.3072, lng: 73.1812, scheduledArr: '10:45', scheduledDep: '10:50', platform: '2' },
+      { code: 'ADI', name: 'Ahmedabad', lat: 23.0225, lng: 72.5714, scheduledArr: '12:55', scheduledDep: null, platform: '1' },
+    ],
+    origin: { code: 'BCT', name: 'Mumbai Central', lat: 18.9713, lng: 72.8195 },
+    destination: { code: 'ADI', name: 'Ahmedabad', lat: 23.0225, lng: 72.5714 },
+    coaches: 20, classes: ['EC', 'CC'], runDays: 'Mon Tue Wed Fri Sat Sun',
+    eta: '12:55', journeyProgress: 27,
+  },
+  {
+    id: 'DUR-12213',
+    number: '12213',
+    name: 'Duronto Express',
+    type: 'DURONTO',
+    status: 'RUNNING',
+    delay: 5,
+    speed: 120,
+    occupancy: 70,
+    currentStationIndex: 2,
+    position: { lat: 20.9374, lng: 85.0985 },
+    route: [
+      { code: 'HWH', name: 'Howrah', lat: 22.5839, lng: 88.3424, scheduledArr: null, scheduledDep: '22:20', platform: '9' },
+      { code: 'BBS', name: 'Bhubaneswar', lat: 20.2961, lng: 85.8245, scheduledArr: '02:15', scheduledDep: '02:20', platform: '1' },
+      { code: 'VSKP', name: 'Visakhapatnam', lat: 17.6868, lng: 83.2185, scheduledArr: '07:35', scheduledDep: '07:40', platform: '3' },
+      { code: 'BZA', name: 'Vijayawada', lat: 16.5062, lng: 80.6480, scheduledArr: '12:05', scheduledDep: '12:10', platform: '2' },
+      { code: 'MAS', name: 'Chennai Central', lat: 13.0827, lng: 80.2707, scheduledArr: '17:40', scheduledDep: null, platform: '8' },
+    ],
+    origin: { code: 'HWH', name: 'Howrah', lat: 22.5839, lng: 88.3424 },
+    destination: { code: 'MAS', name: 'Chennai Central', lat: 13.0827, lng: 80.2707 },
+    coaches: 22, classes: ['1A', '2A', '3A', 'SL'], runDays: 'Mon Wed Fri',
+    eta: '17:45', journeyProgress: 44,
+  },
+  {
+    id: 'GAT-12049',
+    number: '12049',
+    name: 'Gatimaan Express',
+    type: 'GATIMAAN',
+    status: 'ON_TIME',
+    delay: 0,
+    speed: 160,
+    occupancy: 88,
+    currentStationIndex: 0,
+    position: { lat: 28.6439, lng: 77.2090 },
+    route: [
+      { code: 'NZM', name: 'Hazrat Nizamuddin', lat: 28.5877, lng: 77.2537, scheduledArr: null, scheduledDep: '08:10', platform: '1' },
+      { code: 'AGC', name: 'Agra Cantt', lat: 27.1767, lng: 78.0081, scheduledArr: '10:05', scheduledDep: null, platform: '1' },
+    ],
+    origin: { code: 'NZM', name: 'Hazrat Nizamuddin', lat: 28.5877, lng: 77.2537 },
+    destination: { code: 'AGC', name: 'Agra Cantt', lat: 27.1767, lng: 78.0081 },
+    coaches: 12, classes: ['EC', 'CC'], runDays: 'Mon Tue Wed Thu Fri Sat',
+    eta: '10:05', journeyProgress: 8,
+  },
+]
+
+async function getMockTrains() {
+  return MOCK_TRAINS
+}
+
+async function getMockTrainById(id) {
+  return MOCK_TRAINS.find((t) => t.id === id || t.number === id) || null
+}
+
+module.exports = { getMockTrains, getMockTrainById, MOCK_TRAINS }
